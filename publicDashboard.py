@@ -237,10 +237,12 @@ def getSTAENGsnips(amp, stimChan, sesh, subj, eTypeVal):
                                                  'amplitude': {"$lte": amp + 0.1, "$gte": amp - 0.1},
                                                  'stimChan': stimChan}))
 
+        engObj_sorted = [loc for x in hf.allCuffs_mdf.keys() for loc in engObj if loc['mdf_metadata']['location'] == x]
+
         figData = []
         global dataDF
         dataDF = pd.DataFrame()
-        for iObj in engObj:
+        for iObj in engObj_sorted:
             yENG = iObj['wf']
             numSamples = len(yENG)
             xtime = list(np.linspace(0, float(numSamples) / 30, numSamples))
