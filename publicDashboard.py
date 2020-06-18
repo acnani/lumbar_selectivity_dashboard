@@ -237,7 +237,7 @@ def getSTAENGsnips(amp, stimChan, sesh, subj, eTypeVal):
                                                  'amplitude': {"$lte": amp + 0.1, "$gte": amp - 0.1},
                                                  'stimChan': stimChan}))
 
-        engObj_sorted = [loc for x in hf.allCuffs_mdf.keys() for loc in engObj if loc['mdf_metadata']['location'] == x]
+        engObj_sorted = [loc for x in hf.ENG_graphOrder for loc in engObj if loc['location'] == x]
 
         figData = []
         global dataDF
