@@ -115,7 +115,8 @@ app.layout = html.Div(children=[
                               'display the stimulus triggered average (STA) electroneurogram (ENG) recorded at distal nerve branches of the sciatic and femoral nerve. '
                               'The graph below will display an innervation tree where each node represents a nerve. The color of each node '
                               'represents the minimum stimulation amplitude (or activation threshold) that produced a compound action potential (CAP) for the selected stimulation channel. '
-                              'Hover over each node for nerve identity and threshold. You can also download the data for each trial as a CSV file.']),
+                              'Hover over each node for nerve identity and threshold. You can also download the data for each trial as a CSV file. ', 
+                              'Source code available at ', html.A('GitHub', href='https://github.com/acnani/lumbar_selectivity_dashboard')]),
                 ]
             ),
     html.Div(
