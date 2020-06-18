@@ -8,8 +8,7 @@ import plotly.graph_objs as go
 from igraph import *
 import os
 
-print os.environ['mongoString']
-client = pymongo.MongoClient(os.environ['mongoString'])
+client = pymongo.MongoClient(os.environ['SELECTIVITY_MONGO'])
 
 db = client.acute
 collection = 'selectivity'
