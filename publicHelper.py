@@ -8,10 +8,9 @@ import plotly.graph_objs as go
 from igraph import *
 import os
 
-client = pymongo.MongoClient(os.environ['SELECTIVITY_MONGO'])
-
-db = client.acute
-collection = 'selectivity'
+client = pymongo.MongoClient("mongodb+srv://acnani:kCqJqdlmR0a1C75Y@hxopenloop.s8pcong.mongodb.net/?retryWrites=true&w=majority&appName=hxopenloop")
+db = client.cat_selectivity
+collection = 'acute'
 
 # cuff dbName:label
 allCuffs_mdf = collections.OrderedDict([('Sciatic_Proximal','Sci'),
