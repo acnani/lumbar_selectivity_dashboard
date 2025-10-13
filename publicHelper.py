@@ -88,7 +88,7 @@ penetratingSessions = {'Electro':[20, 22, 26, 27, 28, 32],
 
 ## create heatmap colormap
 def createMagmaCMAP():
-    magma_cmap = matplotlib.cm.get_cmap('magma')
+    magma_cmap = matplotlib.colormaps['magma']
     magma_rgb = []
     norm = matplotlib.colors.Normalize(vmin=0, vmax=255)
 
@@ -100,7 +100,7 @@ def createMagmaCMAP():
     pl_colorscale = []
 
     for k in range(255):
-        C = map(np.uint8, np.array(magma_cmap(k * h)[:3]) * 255)
+        C = list(map(np.uint8, np.array(magma_cmap(k * h)[:3]) * 255))
         pl_colorscale.append([k * h, 'rgb' + str((C[0], C[1], C[2]))])
 
     return pl_colorscale
