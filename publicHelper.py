@@ -8,7 +8,7 @@ import plotly.graph_objs as go
 from igraph import *
 import os
 
-client = pymongo.MongoClient("mongodb+srv://acnani:kCqJqdlmR0a1C75Y@hxopenloop.s8pcong.mongodb.net/?retryWrites=true&w=majority&appName=hxopenloop")
+client = pymongo.MongoClient("mongodb+srv://acnani:KfLCYAAwTH4SxhUR@lumbar1.4gfedhl.mongodb.net/?appName=lumbar1")
 db = client.cat_selectivity
 collection = 'acute'
 
