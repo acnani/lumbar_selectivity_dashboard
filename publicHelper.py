@@ -86,26 +86,6 @@ penetratingSessions = {'Electro':[20, 22, 26, 27, 28, 32],
                        'Galactus':[91, 94, 97, 98],
                        'Hobgoblin':[47, 49, 52]}
 
-## create heatmap colormap
-def createMagmaCMAP():
-    magma_cmap = matplotlib.colormaps['magma']
-    magma_rgb = []
-    norm = matplotlib.colors.Normalize(vmin=0, vmax=255)
-
-    for i in range(0, 255):
-        k = matplotlib.colors.colorConverter.to_rgb(magma_cmap(norm(i)))
-        magma_rgb.append(k)
-
-    h = 1.0 / (255 - 1)
-    pl_colorscale = []
-
-    for k in range(255):
-        C = list(map(np.uint8, np.array(magma_cmap(k * h)[:3]) * 255))
-        pl_colorscale.append([k * h, 'rgb' + str((C[0], C[1], C[2]))])
-
-    return pl_colorscale
-magma = createMagmaCMAP()
-
 def convertCurrentToCharge(amplitude_uA, sub, sesh):
     return np.ceil((amplitude_uA*1e-6*PWbySession[sub][sesh]* 1e-6*1e9)*1000)/1000   # ensure 2 decimal places
 
@@ -292,15 +272,7 @@ def generateInnervationTree(resultCuffs, nodeColor, nodeSize=40, stimUnits='ampl
                                   color=nodeColor,  # '#DB4551',
                                   cmin=colorMap[0], cmax=colorMap[1],
                                   line=dict(color='rgb(50,50,50)', width=1),
-                                  colorscale=magma,
-                                  # colorscale=[[0, 'rgb(49,54,149)'],  # 0
-                                  #               [0.0005, 'rgb(69,117,180)'],  # 10
-                                  #               [0.005, 'rgb(116,173,209)'],  # 100
-                                  #               [0.05, 'rgb(171,217,233)'],  # 1000
-                                  #               [0.5, 'rgb(224,243,248)'],
-                                  #               [0.75, 'rgb(215,48,39)'],# 10000
-                                  #               [1.0, 'rgb(165,0,38)'],  # 100000
-                                  #               ],
+                                  colorscale='magma',
                                   colorbar=dict(thickness=20)
                                   ),
                       text=hoverText,

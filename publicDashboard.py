@@ -277,7 +277,7 @@ def createInnervationTreeDiagram(chan, session, subject, eTypeVal):
         allThreshDict = hf.thresholdPerCuff(subject, session, chan, ['BiFem'], True)
         if chan in allThreshDict.keys():
             threshDict = allThreshDict[chan]
-            resultCuffs = threshDict.keys()
+            resultCuffs = list(threshDict.keys())
             allAmps = [threshDict[cuffName] for cuffName in resultCuffs]
             tmp = hf.generateInnervationTree(resultCuffs, allAmps, 25)
             tmp['layout']['title'] = tmp['layout']['title'] + ' (hover for activation threshold) '
@@ -308,10 +308,10 @@ def downloadDF(n, fig, amp):
     if amp:
         global dataDF
         csv_string = dataDF.to_csv(index=False, encoding='utf-8')
-        csv_string = "data:text/csv;charset=utf-8," + urllib.quote(csv_string)
+        csv_string = "data:text/csv;charset=utf-8," + urllib.parse.quote(csv_string)
         return csv_string
 
 # Running the server
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run(debug=False)
     # app.run_server(debug=True)
