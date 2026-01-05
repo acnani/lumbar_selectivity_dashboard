@@ -45,7 +45,7 @@ app.layout = html.Div(children=[
             html.Div(
                 html.A(
                     html.Img(
-                        src='data:image/png;base64,{}'.format(base64.b64encode(open(os.path.join("RNEL_logo.png"),'rb').read())),height="100%",),
+                        src= app.get_asset_url('RNEL_logo.png'),height="100%",),
                     href='http://www.rnel.pitt.edu/', target='_blank'
                 ),
             style={"float": "right", "height": "70%",})
